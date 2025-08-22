@@ -14,6 +14,13 @@
 - `npm run dev:frontend` - Frontend only development
 - `npm run dev:backend` - Backend only development
 
+## Deployment Commands
+- `sudo ./deploy.sh production` - Full server deployment with Nginx + PM2
+- `sudo /var/www/smc-ama-website/update.sh` - Update deployed application
+- `pm2 status` - Check application status
+- `pm2 logs smc-ama-website` - View application logs
+- `pm2 restart smc-ama-website` - Restart application
+
 ## Code Style Guidelines
 
 ### Frontend Structure
