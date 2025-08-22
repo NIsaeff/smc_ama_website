@@ -1,0 +1,350 @@
+import React, { useState, useEffect } from 'react';
+import { ChevronRight, Calendar, MapPin, Users, Award, BookOpen, Briefcase, ArrowRight, Menu, X, Instagram, Linkedin } from 'lucide-react';
+
+export default function AMAWebsite() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const events = [
+    {
+      title: "VISA Inc. Company Tour",
+      date: "Fri, Dec 06",
+      location: "VISA Inc. Global Headquarters",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSfZTg5yowLtoFDGqoGrQfPfqnc1mDcg4O6X_A7SQEM3Y-L_cQ/viewform"
+    },
+    {
+      title: "LinkedIn Workshop",
+      date: "Mon, Nov 18", 
+      location: "Dante 215",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSfiwUOC4ojq7UqRu7RPYB9KrRl8w6ls-OaIbMYSDIdklix35A/viewform"
+    },
+    {
+      title: "Google Analytics Workshop",
+      date: "Tue, Oct 01",
+      location: "BUG Innovation Lab",
+      link: "https://docs.google.com/forms/d/1w6r4n0mbMAwyW0q1f-fGqRD4fgiwQ9zfRnB1ikdOXSo/edit"
+    }
+  ];
+
+  const blogPosts = [
+    {
+      title: "How to Stand Out as a Business Student: A Strategic Approach",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
+    },
+    {
+      title: "From Barter to Bots: The Evolution of Marketing Throughout the Ages", 
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
+    },
+    {
+      title: "What It's Like to Work in Product Marketing vs. Brand Marketing",
+      image: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=400&h=300&fit=crop"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-900 text-white">
+      {/* Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-slate-900/80'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">SMC</span>
+              </div>
+              <div className="text-lg font-semibold text-white">AMA | SMC</div>
+            </div>
+            
+            <div className="hidden md:block">
+              <div className="flex items-center space-x-8">
+                <a href="#about" className="text-gray-300 hover:text-red-400 transition-colors">About</a>
+                <a href="#events" className="text-gray-300 hover:text-red-400 transition-colors">Events</a>
+                <a href="#blog" className="text-gray-300 hover:text-red-400 transition-colors">Blog</a>
+                <a href="#contact" className="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-500 transition-colors">Join Us</a>
+              </div>
+            </div>
+
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-300 hover:text-white"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-slate-900 border-t border-slate-700">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <a href="#about" className="block px-3 py-2 text-gray-300 hover:text-red-400">About</a>
+              <a href="#events" className="block px-3 py-2 text-gray-300 hover:text-red-400">Events</a>
+              <a href="#blog" className="block px-3 py-2 text-gray-300 hover:text-red-400">Blog</a>
+              <a href="#contact" className="block px-3 py-2 text-red-400 font-medium">Join Us</a>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="absolute inset-0 opacity-20">
+          <div 
+            className="absolute inset-0" 
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ef4444' fill-opacity='0.3'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}
+          ></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="space-y-8">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+              <span className="block text-white">American Marketing</span>
+              <span className="block bg-gradient-to-r from-red-500 via-red-400 to-red-300 bg-clip-text text-transparent">Association</span>
+              <span className="block text-gray-300 text-2xl sm:text-3xl lg:text-4xl font-light mt-2">Saint Mary's College of California</span>
+            </h1>
+            
+            <p className="max-w-3xl mx-auto text-xl text-gray-300 leading-relaxed">
+              Empowering and nurturing the growth of future marketing leaders through knowledge, 
+              skills development, and extensive networking in the Bay Area and beyond.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+              <button className="group bg-red-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-red-700 transform hover:scale-105 transition-all duration-200 flex items-center">
+                Join Our Community
+                <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="border-2 border-gray-400 text-gray-300 px-8 py-4 rounded-full text-lg font-medium hover:border-red-500 hover:bg-red-500 hover:text-white transition-all duration-200">
+                Explore Events
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-4xl font-bold text-white mb-6">Who We Are</h2>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  The American Marketing Association at Saint Mary's College is dedicated to providing 
+                  a supportive and dynamic community where aspiring marketers can access valuable knowledge, 
+                  develop essential skills, and build an extensive network to thrive in the ever-evolving 
+                  marketing landscape.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="bg-red-100 rounded-full p-4 w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                    <Users size={24} className="text-red-600" />
+                  </div>
+                  <div className="font-semibold text-white">Community</div>
+                </div>
+                <div className="text-center">
+                  <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                    <BookOpen size={24} className="text-blue-900" />
+                  </div>
+                  <div className="font-semibold text-white">Learning</div>
+                </div>
+                <div className="text-center">
+                  <div className="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                    <Briefcase size={24} className="text-green-600" />
+                  </div>
+                  <div className="font-semibold text-white">Career Growth</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="aspect-square bg-gradient-to-br from-red-400 via-red-500 to-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=600&fit=crop"
+                  alt="AMA Community"
+                  className="w-full h-full object-cover mix-blend-multiply"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-slate-900 rounded-2xl p-6 shadow-lg border border-red-500">
+                <div className="flex items-center space-x-2">
+                  <Award className="text-red-400" size={24} />
+                  <span className="font-semibold text-white">Future Gaels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Events Section */}
+      <section id="events" className="py-20 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">Upcoming Events</h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Join us for exclusive networking opportunities, industry insights, and skill-building workshops
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {events.map((event, index) => (
+              <div key={index} className="bg-slate-800 border border-slate-700 rounded-2xl shadow-lg hover:shadow-xl hover:border-red-500 transition-all duration-300 overflow-hidden group">
+                <div className="p-8">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="bg-red-100 rounded-lg p-3">
+                      <Calendar className="text-red-600" size={24} />
+                    </div>
+                    <span className="text-sm font-medium text-red-400 bg-red-900/30 px-3 py-1 rounded-full">
+                      {event.date}
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors">
+                    {event.title}
+                  </h3>
+                  
+                  <div className="flex items-center text-gray-400 mb-6">
+                    <MapPin size={16} className="mr-2" />
+                    <span className="text-sm">{event.location}</span>
+                  </div>
+                  
+                  <a 
+                    href={event.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-red-400 font-medium hover:text-red-300 transition-colors"
+                  >
+                    Register Now
+                    <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section id="blog" className="py-20 bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">Latest Insights</h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Discover marketing trends, career advice, and industry insights from our community
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post, index) => (
+              <article key={index} className="group cursor-pointer">
+                <div className="aspect-video bg-slate-700 rounded-2xl overflow-hidden mb-4">
+                  <img 
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-white group-hover:text-red-400 transition-colors leading-tight">
+                  {post.title}
+                </h3>
+              </article>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <button className="border-2 border-gray-500 text-gray-300 px-8 py-3 rounded-full font-medium hover:border-red-500 hover:bg-red-500 hover:text-white transition-all duration-200">
+              View All Articles
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-red-600 via-red-500 to-slate-800">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-white mb-6">Ready to Shape Your Marketing Future?</h2>
+          <p className="text-xl text-red-100 mb-8">
+            Join the next generation of marketing leaders and become a Gael at Saint Mary's College
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-white text-red-600 px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors">
+              Become a Member
+            </button>
+            <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white hover:text-red-600 transition-colors">
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer id="contact" className="bg-slate-950 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-12">
+            <div>
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">SMC</span>
+                </div>
+                <div className="text-lg font-semibold">AMA | SMC</div>
+              </div>
+              <p className="text-gray-400 leading-relaxed">
+                Empowering future marketing leaders and Gaels at Saint Mary's College of California
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Quick Links</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#about" className="hover:text-red-400 transition-colors">About Us</a></li>
+                <li><a href="#events" className="hover:text-red-400 transition-colors">Events</a></li>
+                <li><a href="#blog" className="hover:text-red-400 transition-colors">Blog</a></li>
+                <li><a href="#contact" className="hover:text-red-400 transition-colors">Contact</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Connect With Us</h3>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://www.instagram.com/gaelguerillas" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-800 p-3 rounded-full hover:bg-red-600 transition-colors"
+                >
+                  <Instagram size={20} />
+                </a>
+                <a 
+                  href="https://www.linkedin.com/company/97421329/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-800 p-3 rounded-full hover:bg-red-600 transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+              </div>
+              <div className="mt-4 text-gray-400">
+                <p className="mb-1">Saint Mary's College</p>
+                <p>Moraga, CA</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-800 mt-12 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 American Marketing Association - Saint Mary's College. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
